@@ -26,9 +26,9 @@ public class PostController {
     }
 
     @GetMapping("/{postId}")
-    public Post getOnePost(@PathVariable Long postId){
+    public Post getOnePost(@PathVariable Long id){
 
-        return postService.getOnePost(postId);
+        return postService.getOnePost(id);
     }
 
     @PostMapping
