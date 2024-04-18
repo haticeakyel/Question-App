@@ -5,6 +5,7 @@ import com.example.questapp.entities.Post;
 import com.example.questapp.entities.User;
 import com.example.questapp.repos.CommentRepository;
 import com.example.questapp.requests.CommentCreateRequest;
+import com.example.questapp.requests.CommentUpdateRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,15 +56,12 @@ public class CommentService {
 
     }
 
-    public Comment editComment(Long commentId,Comment newComment) {
+    public Comment editComment(Long commentId, CommentUpdateRequest newComment) {
         Optional<Comment> comment = commentRepository.findById(commentId);
         if (comment.isPresent()){
             Comment foundComment = comment.get();
-            foundComment.setUser(newComment.getUser());
-            foundComment.setPost(newComment.getPost());
             foundComment.setText(newComment.getText());
-            commentRepository.save(foundComment);
-            return foundComment;
+            return commentRepository.save(foundComment);
         }
         else {
             return null;

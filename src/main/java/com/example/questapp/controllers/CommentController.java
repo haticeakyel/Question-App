@@ -2,6 +2,7 @@ package com.example.questapp.controllers;
 
 import com.example.questapp.entities.Comment;
 import com.example.questapp.requests.CommentCreateRequest;
+import com.example.questapp.requests.CommentUpdateRequest;
 import com.example.questapp.services.CommentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +34,8 @@ public class CommentController {
     }
 
     @PutMapping("/{commentId}")
-    public Comment updateComment(@PathVariable Long commentId, @RequestBody Comment comment){
-        return commentService.editComment(commentId,comment);
+    public Comment updateComment(@PathVariable Long commentId, @RequestBody CommentUpdateRequest commentUpdateRequest){
+        return commentService.editComment(commentId,commentUpdateRequest);
     }
 
     @DeleteMapping("/{commentId}")
